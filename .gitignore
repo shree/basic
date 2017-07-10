@@ -3,3 +3,4 @@ package-lock.json
 *.sh
 client/bundle.js
 .DS_Store
+directions.markdown
