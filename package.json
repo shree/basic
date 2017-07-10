@@ -24,6 +24,7 @@
     "passport-google-oauth": "^1.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "socket.io": "^2.0.3",
     "webpack": "^3.1.0"
   }
 }
