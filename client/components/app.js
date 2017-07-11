@@ -1,7 +1,8 @@
 import React from "react";
 import Navbar from "./navbar";
 import Home from "./home";
-import UserMessages from "./userMessages";
+import Users from "./users";
+import { BrowserRouter as Router , Route } from "react-router-dom";
 
 export default class App extends React.Component {
 
@@ -30,10 +31,13 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Navbar user={this.state.user}/>
-        <Home user={this.state.user}/>
-      </div>
+      <Router>
+        <div>
+          <Navbar user={this.state.user}/>
+          <Route exact path='/' component={(props) => (<Home {...props} user={this.state.user}/>)} />
+          <Route path='/users' component={Users} />
+        </div>
+      </Router>
     );
   }
 }

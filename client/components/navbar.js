@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Navbar extends React.Component {
   constructor(props){
@@ -50,18 +51,14 @@ export default class Navbar extends React.Component {
             </ul> :
             (<ul className='nav navbar-nav'>
               <li>
-              <form ref='searchForm' className='navbar-form navbar-left animated' onSubmit={this.handleSubmit}>
-                <div className='input-group'>
-                  <input type='text' className='form-control' placeholder='Username' value={this.state.searchQuery} onChange={this.handleChange} />
-                  <span className='input-group-btn'>
-                    <input className="btn btn-primary" type="submit" value="Search" />
-                  </span>
-                </div>
-              </form>
-            </li>
-            <li>
-              <a href="/logout"><strong>Logout</strong></a>
-            </li>
+                <Link to='/'>Home</Link>
+              </li>
+              <li>
+                <Link to='/users'>Users</Link>
+              </li>
+              <li>
+                <a href="/logout">Logout</a>
+              </li>
             </ul>)}
         </div>
       </nav>
