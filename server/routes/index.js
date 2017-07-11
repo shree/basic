@@ -33,6 +33,14 @@ router.post('/saveMessages', function(req,res){
   });
 });
 
+//Get all users and messages from database
+router.get('/getData', function(req,res){
+  User.find({}, function(err,users){
+    if(err) { return res.status(500).send(err) }
+    res.status(200).send(users);
+  });
+});
+
 //Logout
 router.get('/logout', function(req, res){
   req.logout();
