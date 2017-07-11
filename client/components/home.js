@@ -70,8 +70,9 @@ export default class Home extends React.Component {
               allowFullScreen />
             </div>
             <div className="col-xs-5">
-              <div className="chat" id="chat">
-                {this.state.chat.map((item,idx) => (<div className="well" key={idx}>{item[0]}: {item[1]}</div>))}
+              <div className="well">
+                <h4 style={{display:"flex", justifyContent:"center"}}>Chat Window</h4>
+                {this.state.chat.map((item,idx) => (<div key={idx}>{item[0]}: {item[1]}</div>))}
               </div>
 
               <form id="messageForm" onSubmit={this.handleSubmit}>
