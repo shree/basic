@@ -92,8 +92,31 @@ app.use(function(err,req,res,next){
   res.status(err.status || 500);
 });
 
-// module.exports = app;
+//Sockets and Server
 var port = process.env.PORT || 8000;
-app.listen(port,  function() {
-  console.log("Running on port: %s", port);
+var server = app.listen(port);
+var io = require('socket.io').listen(server);
+var connections = [];
+
+io.sockets.on('connection', function(socket) {
+  connections.push(socket);
+  console.log("Connected: %s sockets connected", connections.length);
+
+  //Disconnect
+  socket.on('disconnect', function(data) {
+    connections.splice(connections.indexOf(socket), 1);
+    console.log('Disconnect: %s sockets connected', connections.length);
+  });
+
+  //Send message
+  socket.on('send message', function(data) {
+    io.sockets.emit('new message', {msg: data.message, user: data.user})
+  });
+
 });
+
+// module.exports = app;
+// var port = process.env.PORT || 8000;
+// app.listen(port,  function() {
+//   console.log("Running on port: %s", port);
+// });
